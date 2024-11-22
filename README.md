@@ -1,78 +1,115 @@
-Project Description:
+# Περιγραφή Έργου: Παιχνίδι Κρεμάλας
 
-The Hangman Game is a classic word-guessing game built using Python and Tkinter, a GUI library for creating desktop applications. In this project, the player is tasked with guessing a randomly selected word by suggesting letters. The player has a limited number of incorrect guesses (lives) before the game ends. The game is visualized using a graphical user interface (GUI) that displays the word to guess, tracks incorrect guesses (represented by hearts), and shows a drawing of the "hangman" figure that progressively builds with each incorrect guess.
+Το **Παιχνίδι Κρεμάλας** είναι ένα κλασικό παιχνίδι μαντεψιάς λέξεων, υλοποιημένο σε Python και Tkinter, μια βιβλιοθήκη GUI για τη δημιουργία εφαρμογών επιφάνειας εργασίας. Στο έργο αυτό, ο παίκτης προσπαθεί να μαντέψει μια τυχαία επιλεγμένη λέξη, προτείνοντας γράμματα. Ο παίκτης έχει περιορισμένο αριθμό λανθασμένων προσπαθειών (ζωές), πριν το παιχνίδι λήξει. Το παιχνίδι παρουσιάζεται μέσω ενός **γραφικού περιβάλλοντος χρήστη (GUI)**, το οποίο εμφανίζει τη λέξη προς μαντεψιά, καταγράφει τις λανθασμένες μαντεψιές (με καρδιές) και σχεδιάζει το ανθρωπάκι της "κρεμάλας" που συμπληρώνεται σταδιακά με κάθε λανθασμένη προσπάθεια.
 
-The game allows the user to choose from three difficulty levels (Easy, Medium, and Hard), which affect the number of incorrect guesses allowed and the duration of the game timer. If the player runs out of time or guesses incorrectly too many times, the game ends, and the word is revealed.
-Features:
+### Βασικά Χαρακτηριστικά
 
-    Graphical User Interface (GUI): The game uses Tkinter to create a simple and intuitive interface for users to interact with.
-    Multiple Difficulty Levels: Players can choose from Easy, Medium, or Hard difficulty, each affecting the number of attempts and the game’s timer.
-    Timer: A countdown timer is integrated into the game to add pressure. The game ends when time runs out.
-    Hangman Drawing: A hangman figure is drawn incrementally as incorrect guesses are made, showing the player’s progress toward losing.
-    Game Flow: The game ends when the player either guesses the word correctly or exhausts their attempts/time, showing the result with a pop-up message.
+- **Γραφικό Περιβάλλον Χρήστη (GUI):** Ένα απλό και φιλικό προς τον χρήστη περιβάλλον φτιαγμένο με Tkinter.
+- **Πολλαπλά Επίπεδα Δυσκολίας:** Επιλογή μεταξύ Εύκολου, Μεσαίου και Δύσκολου επιπέδου, που επηρεάζουν τις προσπάθειες και τη διάρκεια του χρονομέτρου.
+- **Χρονόμετρο:** Ένα χρονομετρητής αντίστροφης μέτρησης προσθέτει ένταση στο παιχνίδι.
+- **Σχέδιο Κρεμάλας:** Το ανθρωπάκι σχεδιάζεται σταδιακά με κάθε λανθασμένη μαντεψιά.
+- **Ροή Παιχνιδιού:** Το παιχνίδι τελειώνει όταν ο παίκτης είτε μαντέψει σωστά τη λέξη είτε εξαντλήσει τις προσπάθειες ή τον χρόνο, εμφανίζοντας το αποτέλεσμα με ένα αναδυόμενο μήνυμα.
 
-Code Explanation:
+---
 
-    Imports and Setup:
-        Tkinter: Used for creating the graphical user interface.
-        random: Used to randomly select a word from a list for the game.
+## Επεξήγηση Κώδικα
 
-    Class HangmanGameGUI:
-        This is the core class that controls the entire game. It contains methods to handle the game’s flow, GUI updates, and game logic.
+### Εισαγωγές και Ρυθμίσεις
+- **`Tkinter`**: Για τη δημιουργία του γραφικού περιβάλλοντος χρήστη.
+- **`random`**: Για την τυχαία επιλογή λέξεων από μια λίστα.
 
-    __init__ Method:
-        Initializes the game settings like the word list, attempts, timer, and difficulty level.
-        Calls setup_menu() to display the initial game menu.
+---
 
-    setup_menu Method:
-        Displays the main menu with buttons to select the difficulty level (Easy, Medium, or Hard) and an exit button.
+### Κλάση `HangmanGameGUI`
+Αυτή η κλάση είναι ο πυρήνας της εφαρμογής, διαχειρίζεται τη ροή του παιχνιδιού, τις ενημερώσεις του GUI και τη λογική.
 
-    start_game Method:
-        Starts a new game with a randomly selected word from the word list.
-        Initializes variables like guessed_letters, remaining_attempts, and display_word.
-        Sets difficulty parameters (number of attempts and timer duration).
-        Calls setup_game_gui() to transition to the game screen.
+#### **Μέθοδος `__init__`**
+- Αρχικοποιεί:
+  - Τη λίστα λέξεων, τις προσπάθειες, το χρονόμετρο και το επίπεδο δυσκολίας.
+- Καλεί τη `setup_menu()` για την εμφάνιση του βασικού μενού.
 
-    setup_game_gui Method:
-        Sets up the GUI for the game, including displaying the word (with underscores for hidden letters), remaining lives (hearts), and a timer.
-        Also sets up buttons for input and game options (Restart, Main Menu).
-        Creates a canvas widget to display the hangman scaffold and drawing.
+#### **Μέθοδος `setup_menu`**
+- Εμφανίζει το βασικό μενού με:
+  - Κουμπιά επιλογής δυσκολίας (Εύκολο, Μεσαίο, Δύσκολο).
+  - Κουμπί εξόδου.
 
-    draw_base and draw_hangman Methods:
-        draw_base draws the scaffold for the hangman figure.
-        draw_hangman progressively draws parts of the hangman figure (head, body, arms, legs) as incorrect guesses are made.
+#### **Μέθοδος `start_game`**
+- Ξεκινά ένα νέο παιχνίδι:
+  - Επιλέγει τυχαία μια λέξη από τη λίστα λέξεων.
+  - Αρχικοποιεί μεταβλητές (`guessed_letters`, `remaining_attempts`, `display_word`).
+  - Ρυθμίζει τις παραμέτρους δυσκολίας (προσπάθειες και χρονόμετρο).
+  - Καλεί τη `setup_game_gui()` για να εμφανίσει την οθόνη του παιχνιδιού.
 
-    make_guess Method:
-        Handles the player's guess. It checks if the guess is valid (a single letter) and updates the game state accordingly:
-            If the guess is correct, it reveals the letter in the word.
-            If the guess is incorrect, it reduces the number of attempts, removes a heart, and adds a part to the hangman figure.
-            If the word is completely guessed, the game ends with a win message.
+#### **Μέθοδος `setup_game_gui`**
+- Ρυθμίζει το περιβάλλον του παιχνιδιού:
+  - Εμφανίζει τη λέξη (με κρυμμένα γράμματα ως υπογραμμίσεις), τις ζωές (καρδιές) και το χρονόμετρο.
+  - Περιλαμβάνει κουμπιά για εισαγωγή και επιλογές (Επανεκκίνηση, Κεντρικό Μενού).
+  - Δημιουργεί έναν καμβά για τη σχεδίαση της κρεμάλας.
 
-    update_word_display, update_hearts_display, update_guessed_letters:
-        These methods update the word display, the hearts (lives), and the list of guessed letters after each guess.
+#### **Μέθοδοι `draw_base` και `draw_hangman`**
+- **`draw_base`**: Σχεδιάζει τη βάση της κρεμάλας.
+- **`draw_hangman`**: Σχεδιάζει μέρη του ανθρωπάκου (κεφάλι, σώμα, χέρια, πόδια) με κάθε λανθασμένη μαντεψιά.
 
-    update_timer Method:
-        Updates the countdown timer every second. If the timer reaches 0, the game ends with a time-up message.
+#### **Μέθοδος `make_guess`**
+- Διαχειρίζεται τις μαντεψιές του παίκτη:
+  - Ελέγχει την εγκυρότητα της μαντεψιάς (ένα μόνο γράμμα).
+  - Ενημερώνει την κατάσταση του παιχνιδιού:
+    - **Σωστή Μαντεψιά:** Αποκαλύπτει το γράμμα στη λέξη.
+    - **Λανθασμένη Μαντεψιά:** Μειώνει τις προσπάθειες, αφαιρεί μια καρδιά και προσθέτει μέρος του ανθρωπάκου.
+  - Τερματίζει το παιχνίδι αν:
+    - Η λέξη μαντευτεί πλήρως (νίκη).
+    - Εξαντληθούν οι προσπάθειες (ήττα).
 
-    end_game Method:
-        Ends the game, either when the player guesses the word or runs out of attempts or time. Displays a message box with the result and either shows the correct word or a loss message.
+#### **Μέθοδοι Ενημέρωσης Κατάστασης**
+- **`update_word_display`**: Ενημερώνει τη λέξη με τα μαντεμένα γράμματα.
+- **`update_hearts_display`**: Ενημερώνει τις καρδιές (υπόλοιπες ζωές).
+- **`update_guessed_letters`**: Εμφανίζει τα γράμματα που έχουν μαντευτεί.
 
-    clear_window Method:
-        Clears all widgets (game elements) from the window, making it ready for the next screen (menu or game).
+#### **Μέθοδος `update_timer`**
+- Ενημερώνει το χρονόμετρο κάθε δευτερόλεπτο.
+- Λήγει το παιχνίδι με μήνυμα "χρόνος τελείωσε" αν το χρονόμετρο μηδενιστεί.
 
-    Main Code Execution:
-        The list word_list contains the words from which the game randomly selects.
-        A Tkinter window (root) is created, and an instance of HangmanGameGUI is initialized.
-        The mainloop method starts the Tkinter event loop, allowing the user to interact with the game.
+#### **Μέθοδος `end_game`**
+- Τερματίζει το παιχνίδι:
+  - Εμφανίζει μήνυμα με το αποτέλεσμα (νίκη/ήττα) και τη σωστή λέξη αν χάθηκε το παιχνίδι.
 
-Key Components of the Code:
+#### **Μέθοδος `clear_window`**
+- Αφαιρεί όλα τα στοιχεία από το παράθυρο, προετοιμάζοντάς το για την επόμενη οθόνη (μενού ή παιχνίδι).
 
-    Word Selection: A random word is selected from a list for the player to guess.
-    Input Validation: Ensures the player enters only valid guesses (single alphabetical letters).
-    Game State Updates: After each guess, the display is updated to reflect the current state (word with guessed letters, remaining attempts, etc.).
-    Visual Feedback: The hangman figure and hearts provide visual feedback on the player's progress and mistakes.
-    Timer: A countdown timer adds urgency to the game, and it expires if the player doesn’t guess in time.
+---
 
-Conclusion:
+### Κύρια Εκτέλεση Κώδικα
+- **Λίστα Λέξεων:** Περιέχει τις λέξεις που επιλέγονται τυχαία.
+- **Ρίζα Tkinter:** Αρχικοποιεί το παράθυρο Tkinter.
+- **Παράδειγμα `HangmanGameGUI`:** Ξεκινά τη λογική του παιχνιδιού και τη ρύθμιση του GUI.
+- **`mainloop`:** Τρέχει τη βρόχο γεγονότων του Tkinter για την αλληλεπίδραση με τον χρήστη.
 
-This project demonstrates how to create a fun, interactive game using Python and Tkinter, focusing on core programming concepts like random word selection, input handling, GUI updates, and game state management. By adding elements like a timer and difficulty levels, the game provides a dynamic challenge that varies based on the player's choices. The graphical hangman figure provides a visual representation of the player's progress and makes the game more engaging.
+---
+
+## Σημαντικά Στοιχεία του Κώδικα
+
+1. **Επιλογή Λέξης:** Επιλέγεται τυχαία λέξη για μαντεψιά.
+2. **Έλεγχος Εισόδου:** Εξασφαλίζεται ότι οι μαντεψιές είναι έγκυρες (ένα γράμμα της αλφαβήτου).
+3. **Ενημέρωση Κατάστασης Παιχνιδιού:** Ενημερώνονται:
+   - Η λέξη με τα μαντεμένα γράμματα.
+   - Οι υπόλοιπες ζωές (καρδιές).
+   - Η πρόοδος του ανθρωπάκου.
+4. **Οπτική Ενημέρωση:** Ο ανθρωπάκος και οι καρδιές δίνουν οπτική ένδειξη της προόδου και των λαθών.
+5. **Χρονόμετρο:** Προσθέτει ένταση λήγοντας το παιχνίδι όταν ο χρόνος τελειώσει.
+
+---
+
+## Συμπέρασμα
+
+Αυτό το έργο επιδεικνύει τη δημιουργία ενός διασκεδαστικού, διαδραστικού παιχνιδιού με Python και Tkinter, αναδεικνύοντας βασικές έννοιες προγραμματισμού όπως:
+
+- **Τυχαία Επιλογή Λέξεων**
+- **Έλεγχος Εισόδου**
+- **Διαχείριση Κατάστασης**
+- **Ενημέρωση GUI**
+
+### Βελτιώσεις
+- **Χρονόμετρο και Επίπεδα Δυσκολίας:** Παρέχουν δυναμικές προκλήσεις ανάλογα με τις επιλογές του παίκτη.
+- **Οπτικοποίηση Κρεμάλας:** Δίνει μια ελκυστική γραφική αναπαράσταση της προόδου του παίκτη.
+
+Το **Παιχνίδι Κρεμάλας** αποτελεί ένα συναρπαστικό έργο που συνδυάζει γραφικά στοιχεία και λογική, προσφέροντας μια ολοκληρωμένη διαδραστική εμπειρία.
