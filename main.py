@@ -30,7 +30,7 @@ class HangmanGameGUI:
         self.root.geometry("800x600")  # Set window size
 
         # Title label
-        title_label = tk.Label(self.root, text="Welcome to Hangman!", font=("Helvetica", 32, "bold"), pady=30)
+        title_label = tk.Label(self.root, text="Welcome to Hangman Game!", font=("Helvetica", 32, "bold"), pady=30)
         title_label.pack()
 
         # Difficulty selection buttons
